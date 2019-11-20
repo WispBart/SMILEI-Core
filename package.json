@@ -1,0 +1,9 @@
+{
+  "name": "nl.ixdfontysict.smilei.core",
+  "displayName": "SMILEI Core",
+  "version": "0.0.0",
+  "unity": "2018.3",
+  "description": "Core package for the SMILEI emotion data mixing framework.",
+  "type": "sample",
+  "hideInEditor": false
+}
