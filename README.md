@@ -6,5 +6,12 @@ The package is used in conjunction with plugins for emotion recognition APIs to 
 ## Getting Started
 The package can be installed by adding this git repository to the Packages/manifest.json file.
 
+```
+  "dependencies": {
+    ...
+    "nl.ixdfontysict.smilei.core" : "https://git.fhict.nl/I875317/smilei-core.git#0.0.0"
+  }
+```
+
 ## Contributions
 This project is being developed by [Fontys IXD](https://www.ixdfontysict.nl/).
