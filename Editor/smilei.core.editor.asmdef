@@ -1,7 +1,7 @@
 {
     "name": "smilei.core.editor",
     "references": [
-        "GUID:951235c0e8ba2410580032dd787ce6ea"
+        "smilei.core"
     ],
     "includePlatforms": [
         "Editor"

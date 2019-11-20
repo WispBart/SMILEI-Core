@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace SMILEI.Core.Data
+namespace SMILEI.Core
 {
     /// <summary>
     /// Represents a person with an emotional state.
