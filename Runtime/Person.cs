@@ -16,7 +16,7 @@ namespace SMILEI.Core
         [SerializeField] 
         private List<MixerMap> _mixers = new List<MixerMap>();
 
-        private Dictionary<EType, IEMixer> _mixerDic;
+        private Dictionary<EmotionType, IEmotionMixer> _mixerDic;
 
         void OnEnable()
         {
@@ -27,23 +27,23 @@ namespace SMILEI.Core
 
         void UpdateDic()
         {
-            _mixerDic = new Dictionary<EType, IEMixer>(16);
+            _mixerDic = new Dictionary<EmotionType, IEmotionMixer>(16);
             foreach (var mixer in _mixers)
             {
-                if(mixer.EMixer == null || mixer.Type == null) continue;
-                _mixerDic.Add(mixer.Type, mixer.EMixer);
+                if(mixer.EmotionMixer == null || mixer.EmotionType == null) continue;
+                _mixerDic.Add(mixer.EmotionType, mixer.EmotionMixer);
             }
         }
-        public IEMixer GetMixer(EType t)
+        public IEmotionMixer GetMixer(EmotionType t)
         {
-            IEMixer mixer;
+            IEmotionMixer mixer;
             if (_mixerDic.TryGetValue(t, out mixer))
             {
                 return mixer;
             }
             else
             {
-                if (Warnings) Debug.LogWarning("EType not known", this);
+                if (Warnings) Debug.LogWarning("EmotionType not known", this);
                 return null;
             }
         }
@@ -63,8 +63,8 @@ namespace SMILEI.Core
     [Serializable] 
     public class MixerMap
     {
-        public EType Type;
-        public EMixerAsset EMixer;
+        public EmotionType EmotionType;
+        public EmotionMixerAsset EmotionMixer;
         [Range(0f, 1f)] 
         public float LastValue;
         [Range(0f, 1f)] 
@@ -72,9 +72,9 @@ namespace SMILEI.Core
 
         public void UpdateValue()
         {
-            if (EMixer != null)
+            if (EmotionMixer != null)
             {
-                var value = EMixer.GetRawValue();
+                var value = EmotionMixer.GetRawValue();
                 LastConfidence = value.Confidence;
                 LastValue = value.Value;
             }
