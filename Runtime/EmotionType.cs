@@ -8,6 +8,6 @@ namespace SMILEI.Core
     /// <summary>
     /// Is used to define what emotions can be defined by SMILEI. 
     /// </summary>
-    [CreateAssetMenu(menuName = "SMILEI/Internal/Etype", fileName = "New EType")]
-    public class EType : ScriptableObject { }
+    [CreateAssetMenu(menuName = "SMILEI/Internal/EmotionType", fileName = "New EmotionType")]
+    public class EmotionType : ScriptableObject { }
 }

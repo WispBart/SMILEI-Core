@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using SMILEI.Core;
 using UnityEngine;
 
-namespace SMILEI
+namespace SMILEI.Core
 {
-    public interface IEMixer
+    public interface IEmotionMixer
     {
         void StartRecording();
-        EValue StopRecording();
-        EValue GetRawValue();
+        Emotion StopRecording();
+        Emotion GetRawValue();
     }
     
 }

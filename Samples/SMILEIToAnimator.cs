@@ -11,7 +11,7 @@ namespace SMILEI.Samples
         private Animator _animator;
 
         public string HappyKey = "Happiness";
-        public EType HappyType;
+        public EmotionType HappyType;
         
         public Person Person;
         
