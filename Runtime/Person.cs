@@ -13,7 +13,8 @@ namespace SMILEI.Core
         public bool Warnings = true;
         public bool UpdateDisplayValues = true;
         
-        [SerializeField] private List<MixerMap> _mixers;
+        [SerializeField] 
+        private List<MixerMap> _mixers = new List<MixerMap>();
 
         private Dictionary<EType, IEMixer> _mixerDic;
 
@@ -56,9 +57,7 @@ namespace SMILEI.Core
                     map.UpdateValue();
                 }
             }
-
         }
-
     }
     
     [Serializable] 
@@ -66,8 +65,11 @@ namespace SMILEI.Core
     {
         public EType Type;
         public EMixerAsset EMixer;
-        [Range(0f, 1f)] public float LastValue;
-        [Range(0f, 1f)] public float LastConfidence;
+        [Range(0f, 1f)] 
+        public float LastValue;
+        [Range(0f, 1f)] 
+        public float LastConfidence;
+
         public void UpdateValue()
         {
             if (EMixer != null)
@@ -77,8 +79,6 @@ namespace SMILEI.Core
                 LastValue = value.Value;
             }
         }
-        
     }
-
 }
 
