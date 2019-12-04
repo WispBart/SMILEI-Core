@@ -20,7 +20,7 @@ namespace SMILEI.Core
         {
             if (EmotionMixer != null)
             {
-                var value = EmotionMixer.GetRawValue();
+                var value = EmotionMixer.GetValue();
                 LastConfidence = value.Confidence;
                 LastValue = value.Value;
             }

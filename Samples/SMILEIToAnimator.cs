@@ -23,7 +23,7 @@ namespace SMILEI.Samples
 
         void Update()
         {
-            var value = Person.GetMixer(HappyType)?.GetRawValue().Value ?? 0f;
+            var value = Person.GetMixer(HappyType)?.GetValue().Value ?? 0f;
             _animator.SetFloat(HappyKey, value);
         }
 
