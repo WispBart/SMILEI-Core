@@ -7,18 +7,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName="SMILEI/Simple Emotion Mixer")]
 public class SimpleEmotionMixerAsset : EmotionMixerAsset
 {
-    [SerializeField] private SimpleEmotionMixer _implementation = new SimpleEmotionMixer();
-    public override IEmotionMixer Implementation => _implementation;
-
-    public void SetValue(float value, float confidence, float timestamp) =>
-        _implementation.SetValue(value, confidence, timestamp);
-}
-
-[Serializable] public class SimpleEmotionMixer : IEmotionMixer
-{
     public float Timestamp;
     public float Value;
     public float Confidence;
+
+    public override IEmotionMixer Implementation => (IEmotionMixer) this;
 
     public void SetValue(float value, float confidence, float timestamp)
     {
@@ -26,8 +19,8 @@ public class SimpleEmotionMixerAsset : EmotionMixerAsset
         this.Timestamp = timestamp;
         this.Confidence = confidence;
     }
-    
-    public Emotion GetValue()
+
+    public override Emotion GetValue()
     {
         return new Emotion(Value, Confidence);
     }
