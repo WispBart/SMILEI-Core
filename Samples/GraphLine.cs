@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using SMILEI.Core.Collections.Generic;
+using SMILEI.Core.Samples;
 using UnityEngine;
 
-namespace SMILEI.Samples
+namespace SMILEI.Core.Samples
 {
-    public class DrawGraph : MonoBehaviour
+    public class GraphLine : MonoBehaviour
     {
         [Serializable]
         public struct DataPoint : IComparable<DataPoint>
@@ -18,7 +19,6 @@ namespace SMILEI.Samples
                 return TimeStamp.CompareTo(other.TimeStamp);
             }
         }
-
         public LineRenderer Renderer;
 
         [Header("Use this in a Canvas with screen space camera.")]
@@ -38,6 +38,19 @@ namespace SMILEI.Samples
         private List<Vector3> _drawPoints;
         private Vector3[] _drawArray;
 
+        public void SetDisplayValues(string itemName, Color displayColor)
+        {
+            gameObject.name = itemName;
+            Renderer.colorGradient = new Gradient()
+            {
+                colorKeys = new[]
+                {
+                    new GradientColorKey(displayColor, 0f),
+                    new GradientColorKey(displayColor, 1f),
+                }
+            };
+        }
+
 
         public void Awake()
         {
@@ -49,6 +62,10 @@ namespace SMILEI.Samples
         }
 
 
+        /// <summary>
+        /// Add a data point to the graph.
+        /// </summary>
+        /// <param name="value"></param>
         public void AddDataPoint(float value)
         {
             InsertInOrder(new DataPoint()
@@ -58,6 +75,11 @@ namespace SMILEI.Samples
             });
         }
 
+        /// <summary>
+        /// Add a data point to the graph with a timestamp.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="time">Timestamp expressed in seconds since program start.</param>
         public void AddDataPoint(float value, float time)
         {
             InsertInOrder(new DataPoint()
