@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace SMILEI.Core.Samples
 {
+    /// <summary>
+    /// UI class to draw a graph. Instantiates a GraphLine and a GraphLabel for each item in GraphItems.
+    /// </summary>
     public class GraphDrawer : MonoBehaviour
     {
         [Serializable] public class Item
@@ -26,12 +29,17 @@ namespace SMILEI.Core.Samples
             }
         }
 
+        /// <summary> Items to instantiate </summary>
         public List<GraphItemSettings> GraphItems;
         private List<Item> _items;
-
+        
+        /// <summary> Parent object for the Labels</summary>
         public Transform Labels;
+        /// <summary> Prototype GameObject for a Label</summary>
         public GraphLabel LabelPrototype;
+        /// <summary> Parent object for the GraphLines</summary>
         public Transform Lines;
+        /// <summary> Prototype GameObject for a GraphLine</summary>
         public GraphLine LinePrototype;
 
         void Start()
@@ -42,8 +50,11 @@ namespace SMILEI.Core.Samples
                 AddItem(graphItem);
             }
         }
-
-
+        
+        /// <summary>
+        /// Add an item to the graph.
+        /// </summary>
+        /// <param name="item">A settings object that contains a mixer to read from, a name and colour.</param>
         public void AddItem(GraphItemSettings item)
         {
             var label = Instantiate(LabelPrototype, Labels);
@@ -57,7 +68,11 @@ namespace SMILEI.Core.Samples
             newItem.SetupItem();
             _items.Add(newItem);
         }
-
+        
+        /// <summary>
+        /// Remove an item from the graph.
+        /// </summary>
+        /// <param name="item">The settings object to remove</param>
         public void RemoveItem(GraphItemSettings item)
         {
             var idx = _items.FindIndex(x => x.Settings == item);

@@ -3,6 +3,10 @@
 
 namespace SMILEI.Core
 {
+    /// <summary>
+    /// Linearly interpolates between value A and B based on the value of TConstant or TMixer (choose with MixFrom).
+    /// Optionally uses either input if the other reports 0 confidence.
+    /// </summary>
     [CreateAssetMenu(menuName = "SMILEI/LERP Mixer")]
     public class LerpMixerAsset : EmotionMixerAsset
     {

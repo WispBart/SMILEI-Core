@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using SMILEI.Core.Collections.Generic;
-using SMILEI.Core.Samples;
 using UnityEngine;
 
 namespace SMILEI.Core.Samples
 {
+    /// <summary>
+    /// Uses a LineRenderer to draw a Graph.
+    /// Please note LineRenderers draw in 3D space, which is kind of annoying for our purposes.
+    /// </summary>
     public class GraphLine : MonoBehaviour
     {
         [Serializable]
@@ -19,6 +22,10 @@ namespace SMILEI.Core.Samples
                 return TimeStamp.CompareTo(other.TimeStamp);
             }
         }
+        /// <summary>
+        /// The LineRenderer that draws the actual graph.
+        /// TODO: Replace this with a Canvas-based line renderer.
+        /// </summary>
         public LineRenderer Renderer;
 
         [Header("Use this in a Canvas with screen space camera.")]
@@ -38,6 +45,12 @@ namespace SMILEI.Core.Samples
         private List<Vector3> _drawPoints;
         private Vector3[] _drawArray;
 
+        /// <summary>
+        /// Sets the color of the linerenderer.
+        /// Also sets the GameObject name for easier recognition in the hierarchy view.
+        /// </summary>
+        /// <param name="itemName"></param>
+        /// <param name="displayColor"></param>
         public void SetDisplayValues(string itemName, Color displayColor)
         {
             gameObject.name = itemName;
